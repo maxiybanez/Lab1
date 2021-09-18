@@ -5,6 +5,8 @@
  */
 package practico.pkg5;
 
+import javax.swing.JOptionPane;
+
 /**
  *
  * @author Maxi Ybañez
@@ -20,7 +22,8 @@ public class Arreglo {
         for(int i = 0; i < array.length; i++){
             suma+=array[i];
          }
-        System.out.println("El promedio de la array es; "+(suma/array.length));
+        JOptionPane.showInputDialog(null, "El promedio de la array es: "+(suma/array.length));
+       
     }
     
     public static int buscarMayor(int[][]array){

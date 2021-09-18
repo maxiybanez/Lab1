@@ -5,6 +5,8 @@
  */
 package practico.pkg5;
 
+import javax.swing.JOptionPane;
+
 /**
  *
  * @author Maxi Ybañez
@@ -15,35 +17,47 @@ public class Practico5 {
      * @param args the command line arguments
      */
     public static void main(String[] args) {
-      
-        Arreglo array = new Arreglo();
-        int[ ] edad = new int[5];
-        edad[0]= 5;
-        edad[1]= 8;
-        edad[2]= 50;      
-        edad[3]= 35;
-        edad[4]= 20;
-        int[][] edad2 = new int[4][5];
-        edad2[0][0]= 5;
-        edad2[0][1]= 8;
-        edad2[0][2]= 50;      
-        edad2[0][3]= 35;
-        edad2[0][4]= 20;
-        edad2[1][0]= 29;
-        edad2[1][1]= 40;
-        edad2[1][2]= 31;
-        edad2[1][3]= 70;
         
-        
-        array.sumarLista(edad);
-        int mayor= array.buscarMayor(edad2);
-        System.out.println("El mayor es: "+mayor);
-        
-        int cantidad=array.cuentaVocales("maximiliano");
-        System.out.println("La cantidad de vocales del string son "+cantidad);
-        
-        int cantiCaracter=array.cuentaCarecter("maximiliano", 'i');
-        System.out.println("La cantidad de vocales del string son "+cantiCaracter);
+         String[] menuComienzo = {"Si, Comenzar","No, Salir"};
+        int seleccionM = JOptionPane.showOptionDialog(null, "Elija una opcion", "", JOptionPane.DEFAULT_OPTION, JOptionPane.QUESTION_MESSAGE, null, menuComienzo, menuComienzo[0]);
+        switch(seleccionM){
+           case 0: Arreglo array = new Arreglo();
+                   int cantEdad= Integer.parseInt(JOptionPane.showInputDialog(null, "Ingrese la cantidad de edades"));
+                   int[] edad = new int[cantEdad];
+                   for(int i=0;i<cantEdad;i++){
+                       int edades= Integer.parseInt(JOptionPane.showInputDialog(null, "Ingrese una edad"));
+                       edad[i]=edades;
+                   }
+                   int cantEdad2= Integer.parseInt(JOptionPane.showInputDialog(null, "Ingrese la cantidad de edades"));
+                   int cantEdad3= Integer.parseInt(JOptionPane.showInputDialog(null, "Ingrese la cantidad de edades"));
+                   int[][] edad2 = new int[cantEdad2][cantEdad3];
+                   for(int j=0;j<cantEdad;j++){
+                       for(int x=0;x<cantEdad;x++){
+                         int edadArreglo2= Integer.parseInt(JOptionPane.showInputDialog(null, "Ingrese una edad"));
+                         edad2[j][x]= edadArreglo2;
+                       }
+                   }
+                   String[] menu2 = {"Buscar Mayor","Contar Vocales","Contar Caracteres","Salir"};
+                   int seleccion2 = JOptionPane.showOptionDialog(null, "Elija una opcion", "", JOptionPane.DEFAULT_OPTION, JOptionPane.QUESTION_MESSAGE, null, menu2, menu2[0]); 
+                   switch(seleccion2){
+                       case 0: array.sumarLista(edad);
+                               int mayor= array.buscarMayor(edad2);
+                               JOptionPane.showMessageDialog(null, "El mayor de la array es: "+ mayor);
+                               break;
+                       case 1: String nombre= JOptionPane.showInputDialog(null, "Ingrese una palabra");
+                                int cantidad=array.cuentaVocales(nombre);
+                                JOptionPane.showMessageDialog(null, "La cantidad de vocales de la palabra son: "+cantidad);
+                                break;
+                       case 2:  String palabra= JOptionPane.showInputDialog(null, "Ingrese una palabra");
+                                String letra= JOptionPane.showInputDialog(null, "Ingrese un letra");
+                                char letraChar = letra.charAt(0);
+                                int cantiCaracter=array.cuentaCarecter(palabra, letraChar);
+                                JOptionPane.showMessageDialog(null, "La cantidad de caracter "+letraChar+" es de "+cantiCaracter);
+                                break;
+                       case 3: break;
+                    }
+            case 1: break;
+          }
     }
     
 }
