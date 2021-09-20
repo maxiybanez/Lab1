@@ -37,6 +37,9 @@ public class Practico5 {
                          edad2[j][x]= edadArreglo2;
                        }
                    }
+                   Arreglo array = new Arreglo();
+                   int[] edad = new int[5];
+                   
                    String[] menu2 = {"Buscar Mayor","Contar Vocales","Contar Caracteres","Salir"};
                    int seleccion2 = JOptionPane.showOptionDialog(null, "Elija una opcion", "", JOptionPane.DEFAULT_OPTION, JOptionPane.QUESTION_MESSAGE, null, menu2, menu2[0]); 
                    switch(seleccion2){
